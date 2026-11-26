@@ -1,0 +1,158 @@
+@import "tailwindcss";
+
+:root {
+  --background: #07060A;
+  --foreground: #EDE5D8;
+  --gold-primary: #F2D06B;
+  --gold-secondary: #C9A227;
+  --gold-deep: #B8860B;
+  --gold-light: #FFF2CC;
+  --oxblood: #7E1E1E;
+  --verdigris: #2F6F5E;
+  --umber: #14100D;
+  --obsidian: #07060A;
+  
+  color-scheme: dark;
+}
+
+html, body {
+  background-color: #07060A !important;
+  color: var(--foreground);
+  font-family: "Cinzel", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, serif, sans-serif;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  overflow-x: hidden !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+body {
+  background-image: 
+    radial-gradient(circle at 50% 45%, rgba(201, 162, 39, 0.12) 0%, rgba(20, 16, 13, 0.8) 55%, #07060A 100%),
+    linear-gradient(180deg, #07060A 0%, #14100D 50%, #07060A 100%);
+  background-attachment: fixed;
+}
+
+/* 3D Perspective Physics */
+.perspective-800 {
+  perspective: 800px;
+}
+.perspective-1000 {
+  perspective: 1000px;
+}
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+/* 3D Playing Card & Table Slots */
+.table-slot {
+  box-shadow: 
+    inset 0 4px 12px rgba(0, 0, 0, 0.9),
+    0 1px 0 rgba(201, 162, 39, 0.2);
+}
+
+@keyframes candleFlicker {
+  0%, 100% {
+    opacity: 0.96;
+    transform: scale(1);
+  }
+  25% {
+    opacity: 0.90;
+    transform: scale(0.996);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.004);
+  }
+  75% {
+    opacity: 0.93;
+    transform: scale(0.998);
+  }
+}
+
+.table-plate {
+  background: radial-gradient(circle at center, rgba(242, 208, 107, 0.10) 0%, rgba(20, 16, 13, 0.7) 70%, transparent 100%);
+  animation: candleFlicker 2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .table-plate {
+    animation: none !important;
+  }
+}
+
+/* 3D Gold Action Button */
+.btn-gold-3d {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  min-height: 44px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #07060A !important;
+  background: linear-gradient(180deg, #FFF2CC 0%, #F2D06B 50%, #C9A227 100%) !important;
+  border: 1px solid #F2D06B !important;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 
+    0 4px 14px rgba(201, 162, 39, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.35);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-gold-3d:hover {
+  background: linear-gradient(180deg, #FFF8E1 0%, #FFE28A 50%, #D4AF37 100%) !important;
+  box-shadow: 
+    0 8px 24px rgba(242, 208, 107, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.4);
+  translate: 0 -1px;
+}
+
+/* Subtle Film Grain Layer */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 99;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Fine Vignette */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 40;
+  background: radial-gradient(circle at center, transparent 60%, rgba(7, 6, 10, 0.85) 100%);
+}
+
+/* Accessible focus ring */
+*:focus-visible {
+  outline: 2px solid #F2D06B !important;
+  outline-offset: 2px !important;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #07060A;
+}
+::-webkit-scrollbar-thumb {
+  background: #C9A227;
+  border-radius: 3px;
+}
